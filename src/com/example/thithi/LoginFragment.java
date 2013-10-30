@@ -112,18 +112,18 @@ public class LoginFragment extends Fragment implements OnClickListener {
 //			String Url = MainApplication.UrlServer
 //					+ "users/getAuthenticate.xml";
 			String Email = edlogin_email.getText().toString();
-			DatabaseHandler db = new DatabaseHandler(getActivity());
-	        
+//			DatabaseHandler db = new DatabaseHandler(getActivity());
+			SQLContact contactdb = new SQLContact(getActivity());
 	        /**
 	         * CRUD Operations
 	         * */
 	        // Inserting Contacts
 	        Log.d("Insert: ", "Inserting ..");
-	        db.addContact(new Contact(Email, "9100000000"));
+	        contactdb.addContact(new Contact(Email, "9100000000"));
 	        
 	     // Reading all contacts
 	        Log.d("Reading: ", "Reading all contacts..");
-	        List<Contact> contacts = db.getAllContacts();       
+	        List<Contact> contacts = contactdb.getAllContacts();       
 	 
 	        for (Contact cn : contacts) {
 	            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Phone: " + cn.getPhoneNumber();

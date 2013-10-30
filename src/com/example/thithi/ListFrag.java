@@ -29,8 +29,10 @@ public class ListFrag extends Fragment {
 		View view = inflater.inflate(R.layout.list_fragment, container, false);
 		gv = (GridView)view.findViewById(R.id.gridView1);
 		
-		DatabaseHandler db = new DatabaseHandler(getActivity());
-		List<Contact> contacts = db.getAllContacts();       
+//		DatabaseHandler db = new DatabaseHandler(getActivity());
+		SQLContact contactdb = new SQLContact(getActivity());
+		
+		List<Contact> contacts = contactdb.getAllContacts();       
 		 
         for (Contact cn : contacts) {
             String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Phone: " + cn.getPhoneNumber();
