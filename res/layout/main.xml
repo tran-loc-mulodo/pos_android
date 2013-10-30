@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
+    <!-- <fragment
+        android:id="@+id/frag_series"
+        android:layout_width="750dip"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        class="com.authorwjf.hello_fragments.ListFrag" />
+    <fragment
+        android:id="@+id/frag_capt"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        class="com.authorwjf.hello_fragments.DetailFrag" /> -->
+
+    <RelativeLayout
+        android:layout_width="750dp"
+        android:layout_height="match_parent"
+        android:id="@+id/contentArea" >
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="750dp"
+        android:id="@+id/billArea" >
+    </RelativeLayout>    
+</RelativeLayout>

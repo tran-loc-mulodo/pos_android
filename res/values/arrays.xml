@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<array name="entries">
+		<item>@drawable/icon_album</item>		
+		<item>@drawable/icon_upload</item> 		
+		<item>@drawable/icon_photo_like</item>		
+		<item>@drawable/icon_logout</item>
+					
+	</array>	
+	<array name="names">
+	    <item>Album Photo</item>
+	    <item>Upload</item>
+	    <item>Photo Like</item>
+	    <item>Logout</item>
+	
+	</array>
+</resources>
