@@ -20,39 +20,39 @@ public class SQLProducts extends DatabaseHandler {
 	 */
 
 	// Adding new product
-	void addContact(Contact contact) {
+	void addProduct(Product product) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(KEY_NAME, contact.getName()); // Contact Name
-		values.put(KEY_PH_NO, contact.getPhoneNumber()); // Contact Phone
+		values.put(PRO_NAME, product.getName()); // Contact Name
+		values.put(PRO_IMG, product.getImage()); // Contact Phone
 
 		// Inserting Row
-		db.insert(TABLE_CONTACTS, null, values);
+		db.insert(TABLE_PRODUCTS, null, values);
 		db.close(); // Closing database connection
 	}
 
 	// Getting single contact
-	Contact getContact(int id) {
+	Product getProduct(int id) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(TABLE_CONTACTS, new String[] { KEY_ID,
-				KEY_NAME, KEY_PH_NO }, KEY_ID + "=?",
+		Cursor cursor = db.query(TABLE_PRODUCTS, new String[] { PRO_ID,
+				PRO_NAME, PRO_IMG }, PRO_ID + "=?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
-		Contact contact = new Contact(Integer.parseInt(cursor.getString(0)),
+		Product product = new Product(Integer.parseInt(cursor.getString(0)),
 				cursor.getString(1), cursor.getString(2));
-		// return contact
-		return contact;
+		// return product
+		return product;
 	}
 	
 	// Getting All Contacts
-	public List<Contact> getAllContacts() {
-		List<Contact> contactList = new ArrayList<Contact>();
+	public List<Product> getAllProducts() {
+		List<Product> productList = new ArrayList<Product>();
 		// Select All Query
-		String selectQuery = "SELECT  * FROM " + TABLE_CONTACTS;
+		String selectQuery = "SELECT  * FROM " + TABLE_PRODUCTS;
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -60,67 +60,44 @@ public class SQLProducts extends DatabaseHandler {
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Contact contact = new Contact();
-				contact.setID(Integer.parseInt(cursor.getString(0)));
-				contact.setName(cursor.getString(1));
-				contact.setPhoneNumber(cursor.getString(2));
-				// Adding contact to list
-				contactList.add(contact);
+				Product product = new Product();
+				product.setID(Integer.parseInt(cursor.getString(0)));
+				product.setName(cursor.getString(1));
+				product.setImage(cursor.getString(2));
+				// Adding product to list
+				productList.add(product);
 			} while (cursor.moveToNext());
 		}
 
 		// return contact list
-		return contactList;
+		return productList;
 	}
 	
-	// Getting All Contacts
-		public List<Contact> getAllContactsName() {
-			List<Contact> contactList = new ArrayList<Contact>();
-			// Select All Query
-			String selectQuery = "SELECT  * FROM " + TABLE_CONTACTS;
-
-			SQLiteDatabase db = this.getWritableDatabase();
-			Cursor cursor = db.rawQuery(selectQuery, null);
-
-			// looping through all rows and adding to list
-			if (cursor.moveToFirst()) {
-				do {
-					Contact contact = new Contact();
-					contact.setName(cursor.getString(1));
-					// Adding contact to list
-					contactList.add(contact);
-				} while (cursor.moveToNext());
-			}
-
-			// return contact list
-			return contactList;
-		}
-
-	// Updating single contact
-	public int updateContact(Contact contact) {
+	// Updating single product
+	public int updateProduct(Product product) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(KEY_NAME, contact.getName());
-		values.put(KEY_PH_NO, contact.getPhoneNumber());
+		values.put(PRO_NAME, product.getName());
+		values.put(PRO_IMG, product.getImage());
 
 		// updating row
-		return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?",
-				new String[] { String.valueOf(contact.getID()) });
+		return db.update(TABLE_PRODUCTS, values, PRO_ID + " = ?",
+				new String[] { String.valueOf(product.getID()) });
 	}
 
-	// Deleting single contact
-	public void deleteContact(Contact contact) {
+	// Deleting single product
+	public void deleteProduct(Product product) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.delete(TABLE_CONTACTS, KEY_ID + " = ?",
-				new String[] { String.valueOf(contact.getID()) });
+		db.delete(TABLE_PRODUCTS , PRO_ID + " = ?",
+				new String[] { String.valueOf(product.getID()) });
 		db.close();
 	}
 
 
-	// Getting contacts Count
-	public int getContactsCount() {
-		String countQuery = "SELECT  * FROM " + TABLE_CONTACTS;
+	// Getting products Count
+	public int getProductsCount() {
+		String countQuery = "SELECT  * FROM " + TABLE_PRODUCTS;
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
 		cursor.close();
