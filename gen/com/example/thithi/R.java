@@ -197,27 +197,36 @@ containing a value of this type.
         public static final int tab_temp_unselect=0x7f02006d;
     }
     public static final class id {
-        public static final int LoginPageLayout=0x7f0a0007;
-        public static final int action_create=0x7f0a0014;
-        public static final int action_home=0x7f0a0013;
-        public static final int action_settings=0x7f0a0012;
-        public static final int billArea=0x7f0a0011;
+        public static final int ListProductLayout=0x7f0a0006;
+        public static final int LoginPageLayout=0x7f0a000b;
+        public static final int action_create=0x7f0a001d;
+        public static final int action_home=0x7f0a001c;
+        public static final int action_settings=0x7f0a001b;
+        public static final int billArea=0x7f0a001a;
         public static final int btn_add=0x7f0a0001;
-        public static final int btn_login=0x7f0a000c;
-        public static final int btn_register=0x7f0a000d;
+        public static final int btn_login=0x7f0a0014;
+        public static final int btn_register=0x7f0a0016;
         public static final int captain=0x7f0a0003;
-        public static final int contentArea=0x7f0a0010;
-        public static final int edlogin_email=0x7f0a0009;
-        public static final int edlogin_pass=0x7f0a000b;
-        public static final int gridView1=0x7f0a0006;
+        public static final int contentArea=0x7f0a0019;
+        public static final int ed_product_add_name=0x7f0a000f;
+        public static final int edlogin_email=0x7f0a0015;
+        public static final int edlogin_pass=0x7f0a0013;
+        public static final int gridView1=0x7f0a000a;
         public static final int imgGridview=0x7f0a0004;
         public static final int input_label=0x7f0a0000;
         public static final int kindofcake=0x7f0a0005;
-        public static final int linear_login_eraser_email=0x7f0a000e;
-        public static final int linear_login_eraser_password=0x7f0a000f;
+        public static final int linear_login_eraser_email=0x7f0a0017;
+        public static final int linear_login_eraser_password=0x7f0a0018;
+        public static final int product_add_caterogy=0x7f0a000d;
+        public static final int product_add_image=0x7f0a0012;
         public static final int spinner=0x7f0a0002;
-        public static final int tv_email=0x7f0a0008;
-        public static final int tv_pass=0x7f0a000a;
+        public static final int tabBanhKem=0x7f0a0007;
+        public static final int tabBanhNgot=0x7f0a0009;
+        public static final int tabKhac=0x7f0a0008;
+        public static final int tv_category=0x7f0a000c;
+        public static final int tv_pass=0x7f0a0010;
+        public static final int tv_product_add_image=0x7f0a0011;
+        public static final int tv_product_add_name=0x7f0a000e;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -232,17 +241,23 @@ containing a value of this type.
         public static final int main=0x7f090000;
     }
     public static final class string {
+        public static final int BanhKem=0x7f070017;
+        public static final int BanhNgot=0x7f070018;
         public static final int Birthday=0x7f07000a;
         public static final int Cancel=0x7f07000c;
+        public static final int Category=0x7f07001a;
         public static final int Comment=0x7f070010;
         public static final int Confirmpasswrod=0x7f070008;
         public static final int Delete=0x7f070015;
         public static final int DetailPhoto=0x7f07000f;
         public static final int Email=0x7f070006;
+        public static final int Image=0x7f07001c;
+        public static final int Khac=0x7f070019;
         public static final int Login=0x7f07000d;
         public static final int Password=0x7f070007;
         public static final int Phone=0x7f070009;
         public static final int Photolike=0x7f070014;
+        public static final int ProductName=0x7f07001b;
         public static final int Register=0x7f07000b;
         public static final int Submit=0x7f07000e;
         public static final int TextLike=0x7f070011;

@@ -25,7 +25,7 @@ public class CreateProductFrag extends Fragment implements OnClickListener{
 	private static final String TAG = CreateProductFrag.class.getName();
 	private LinearLayout CreatePageLayout;
 	// Spinner element
-	Spinner spinner;
+//	Spinner spinner;
 
 	// Add button
 	Button btnAdd;
@@ -62,7 +62,7 @@ public class CreateProductFrag extends Fragment implements OnClickListener{
 
 		// new label input field
 //		inputLabel = (EditText) view.findViewById(R.id.input_label);
-		loadSpinnerData();
+//		loadSpinnerData();
 		
 //		edlogin_email = (EditText) LoginPageLayout
 //				.findViewById(R.id.edlogin_email);
@@ -110,6 +110,5 @@ public class CreateProductFrag extends Fragment implements OnClickListener{
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		// attaching data adapter to spinner
-		spinner.setAdapter(dataAdapter);
 	}
 }

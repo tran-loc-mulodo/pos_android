@@ -31,8 +31,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	
 	//Products Table Column names
 	protected static final String PRO_ID = "id";
+	protected static final String PRO_CATEGORY = "category";
 	protected static final String PRO_NAME = "name";
 	protected static final String PRO_IMG = "img";
+	protected static final String PRO_QU_TY = "quantity";
 	protected static final String PRO_CDATE = "cdate";
 	protected static final String PRO_MDATE = "mdate";
 	protected static final String PRO_RE_PRICE = "retail_price";
@@ -52,9 +54,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(CREATE_CONTACTS_TABLE);
 		
 		String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + TABLE_PRODUCTS + "("
-				+ PRO_ID + " INTEGER PRIMARY KEY," + PRO_NAME + " VARCHAR,"
-				+ PRO_IMG + " VARCHAR," + PRO_CDATE + " INTEGER," 
-				+ PRO_MDATE + " INTEGER," + PRO_WH_PRICE + " FLOAT,"
+				+ PRO_ID + " INTEGER PRIMARY KEY," + PRO_CATEGORY + " VARCHAR,"
+				+ PRO_NAME + " VARCHAR," + PRO_IMG + " VARCHAR," + PRO_QU_TY + " INTEGER," 
+				+ PRO_CDATE + " INTEGER," + PRO_MDATE + " INTEGER," + PRO_WH_PRICE + " FLOAT,"
 				+ PRO_RE_PRICE + " FLOAT," + PRO_STATUS + " BOOL DEFAULT 1" + ")";
 		db.execSQL(CREATE_PRODUCTS_TABLE);
 	}

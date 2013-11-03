@@ -5,8 +5,10 @@ import android.R.bool;
 public class Product {
 	//private variables
 		int _id;
+		String _category;
 		String _name;
 		String _img;
+		int _qty;
 		int _cdate;
 		int _mdate;
 		Float _whosale_price;
@@ -17,18 +19,37 @@ public class Product {
 		public Product(){
 			
 		}
+		
 		// constructor
-		public Product(int id, String name, String img){
+		public Product(int id, String category , String name, String img , int qty){
 			this._id = id;
+			this._category = category;
+			this._name = name;
+			this._img = img;
+			this._qty = qty;
+		}
+				
+		// constructor
+		public Product(int id, String category , String name, String img){
+			this._id = id;
+			this._category = category;
 			this._name = name;
 			this._img = img;
 		}
 		
 		// constructor
+		public Product(String category , String name, String img){
+			this._category = category;
+			this._name = name;
+			this._img = img;
+		}
+				
+		// constructor
 		public Product(String name, String img){
 			this._name = name;
 			this._img = img;
 		}
+		
 		// getting ID
 		public int getID(){
 			return this._id;
@@ -37,6 +58,16 @@ public class Product {
 		// setting id
 		public void setID(int id){
 			this._id = id;
+		}
+		
+		// getting category
+		public String getCategory(){
+			return this._category;
+		}
+		
+		// setting name
+		public void setCategory(String category){
+			this._category = category;
 		}
 		
 		// getting name
@@ -57,6 +88,16 @@ public class Product {
 		// setting image
 		public void setImage(String image){
 			this._img = image;
+		}
+		
+		// getting quantity
+		public int getQuantity(){
+			return this._qty;
+		}
+		
+		// setting quantity
+		public void setQuantity(int qty){
+			this._qty = qty;
 		}
 		
 		// getting create date

@@ -24,4 +24,11 @@
     <string name="Photolike">Photo Liked</string>
     <string name="Delete">Delete</string>
 	<string name="spinner_title">Select Label</string>
+	
+	<string name="BanhKem">Banh Kem</string>
+	<string name="BanhNgot">Banh Ngot</string>
+	<string name="Khac">Khac</string>
+	<string name="Category">Loai Banh</string>
+	<string name="ProductName">Ten Banh</string>
+	<string name="Image">Hinh</string>
 </resources>

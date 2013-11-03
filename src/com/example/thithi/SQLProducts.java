@@ -24,8 +24,9 @@ public class SQLProducts extends DatabaseHandler {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(PRO_NAME, product.getName()); // Contact Name
-		values.put(PRO_IMG, product.getImage()); // Contact Phone
+		values.put(PRO_CATEGORY, product.getCategory()); // Product  Category
+		values.put(PRO_NAME, product.getName()); // Product  Name
+		values.put(PRO_IMG, product.getImage()); // Product Image
 
 		// Inserting Row
 		db.insert(TABLE_PRODUCTS, null, values);
@@ -36,14 +37,14 @@ public class SQLProducts extends DatabaseHandler {
 	Product getProduct(int id) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(TABLE_PRODUCTS, new String[] { PRO_ID,
+		Cursor cursor = db.query(TABLE_PRODUCTS, new String[] { PRO_ID, PRO_CATEGORY ,
 				PRO_NAME, PRO_IMG }, PRO_ID + "=?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
 		Product product = new Product(Integer.parseInt(cursor.getString(0)),
-				cursor.getString(1), cursor.getString(2));
+				cursor.getString(1), cursor.getString(2), cursor.getString(3));
 		// return product
 		return product;
 	}
@@ -62,8 +63,10 @@ public class SQLProducts extends DatabaseHandler {
 			do {
 				Product product = new Product();
 				product.setID(Integer.parseInt(cursor.getString(0)));
-				product.setName(cursor.getString(1));
-				product.setImage(cursor.getString(2));
+				product.setCategory(cursor.getString(1));
+				product.setName(cursor.getString(2));
+				product.setImage(cursor.getString(3));
+//				product.setQuantity(Integer.parseInt(cursor.getString(4)));
 				// Adding product to list
 				productList.add(product);
 			} while (cursor.moveToNext());
@@ -72,6 +75,33 @@ public class SQLProducts extends DatabaseHandler {
 		// return contact list
 		return productList;
 	}
+	
+	// Getting Products with category
+		public List<Product> getAllProducts(String cateName) {
+			List<Product> productList = new ArrayList<Product>();
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_PRODUCTS + " WHERE " + PRO_CATEGORY + " ='" + cateName + "'";
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Product product = new Product();
+					product.setID(Integer.parseInt(cursor.getString(0)));
+					product.setCategory(cursor.getString(1));
+					product.setName(cursor.getString(2));
+					product.setImage(cursor.getString(3));
+//					product.setQuantity(Integer.parseInt(cursor.getString(4)));
+					// Adding product to list
+					productList.add(product);
+				} while (cursor.moveToNext());
+			}
+
+			// return contact list
+			return productList;
+		}
 	
 	// Updating single product
 	public int updateProduct(Product product) {

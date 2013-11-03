@@ -1,10 +1,18 @@
 package com.example.thithi;
 
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,13 +35,13 @@ public class AlbumAdapter extends BaseAdapter{
 	private ImageView mImage;
 	private TextView mNameCake;
 		
-	List<Contact> mcontacts ;
-	public AlbumAdapter(Context context,List<Contact> contacts )
+	List<Product> mproducts ;
+	public AlbumAdapter(Context context,List<Product> products )
 	{
 //		mVector = vectorPhotoOtherUser;
 		mContext = context;
 //		mImage=new ImageLoader(mContext);
-		mcontacts = contacts;
+		mproducts = products;
 	}
 	
 	/*
@@ -43,7 +51,7 @@ public class AlbumAdapter extends BaseAdapter{
 	public int getCount() {
 		// TODO Auto-generated method stub
 //		return mVector.getPropertyCount();
-		return mcontacts.size();
+		return mproducts.size();
 	}
 
 	/*
@@ -77,11 +85,44 @@ public class AlbumAdapter extends BaseAdapter{
 				 convertView = inflator.inflate(R.layout.gridview_product , null);
 				 view.imgChoice = (ImageView) convertView
 						.findViewById(R.id.imgGridview);
-//				 view.imgChoice.setImageResource(hinh[position]);
-				 
+//				 byte[] decodedByte = Base64.decode(mproducts.get(position)._img, 0);
+//				   Bitmap bm = BitmapFactory.decodeByteArray(decodedByte, 0,
+//				     decodedByte.length);
+//				   view.imgChoice;
+//				 try 
+//				 {
+//				     // get input stream
+//					 AssetManager assetManager = getAssets();
+//
+//					    InputStream istr = assetManager.open(fileName);
+//				     InputStream ims = getAssets().open("avatar.jpg");
+//				     // load image as Drawable
+//				     Drawable d = Drawable.createFromStream(ims, null);
+//				     // set image to ImageView
+//				     mImage.setImageDrawable(d);
+//				 }
+//				 catch(IOException ex) 
+//				 {
+//				     return null;
+//				 }
+//				   view.imgChoice.setImageResource(Integer.parseInt(mproducts.get(position)._img));
+				// load image
+			        try {
+			            // get input stream
+			            InputStream ims = mContext.getAssets().open(mproducts.get(position)._img);
+			            // load image as Drawable
+			            Drawable d = Drawable.createFromStream(ims, null);
+			            // set image to ImageView
+			            view.imgChoice.setImageDrawable(d);
+			        }
+			        catch(IOException ex) {
+			            Log.d("load image", "loi nhe");
+			        }
+//				 Log.d("link  hinh", url_image);
 				// Set name for image
+				   
 				  view.txtNameofCake = (TextView) convertView.findViewById(R.id.kindofcake);
-				  view.txtNameofCake.setText(mcontacts.get(position)._name);
+				  view.txtNameofCake.setText(mproducts.get(position)._name);
 				  convertView.setTag(view);
 			} else {
 				  view = (ViewHolder)convertView.getTag();

@@ -72,7 +72,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	        	startFragmentLogin();
 	            return true;
 	        case R.id.action_home:
-	        	startFragmentCreateProduct();
+	        	startFragmentProduct();
 	            return true;
 	        case R.id.action_create:
 	        	startFragmentCreateProduct();

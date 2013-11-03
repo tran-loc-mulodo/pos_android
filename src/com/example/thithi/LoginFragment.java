@@ -25,18 +25,16 @@ public class LoginFragment extends Fragment implements OnClickListener {
 
 	private static final String TAG = LoginFragment.class.getName();
 	private RelativeLayout LoginPageLayout;
-	private EditText edlogin_email, edlogin_pass;
+	private EditText edlogin_email, edlogin_pass , ed_product_add_name;
 	private Button btn_login, btn_register;
 	private LinearLayout linear_login_eraser_email,
 			linear_login_eraser_password;
 	// Spinner element
-	private Spinner spinner;
+	private Spinner spinner_category , spinner_image;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
-		
 	}
 
 	/*
@@ -71,8 +69,8 @@ public class LoginFragment extends Fragment implements OnClickListener {
 		// TODO Auto-generated method stub
 		LoginPageLayout = (RelativeLayout) inflater.inflate(R.layout.login,
 				null);
-		edlogin_email = (EditText) LoginPageLayout
-				.findViewById(R.id.edlogin_email);
+		ed_product_add_name = (EditText) LoginPageLayout
+				.findViewById(R.id.ed_product_add_name);
 		edlogin_pass = (EditText) LoginPageLayout
 				.findViewById(R.id.edlogin_pass);
 		btn_login = (Button) LoginPageLayout.findViewById(R.id.btn_login);
@@ -81,9 +79,9 @@ public class LoginFragment extends Fragment implements OnClickListener {
 				.findViewById(R.id.linear_login_eraser_email);
 		linear_login_eraser_password = (LinearLayout) LoginPageLayout
 				.findViewById(R.id.linear_login_eraser_password);
-		spinner = (Spinner) LoginPageLayout.findViewById(R.id.spinner);
-//		edlogin_email.setText("koko@gmail.com");
-//		edlogin_pass.setText("123456");
+		
+		spinner_category = (Spinner) LoginPageLayout.findViewById(R.id.product_add_caterogy);
+		spinner_image = (Spinner) LoginPageLayout.findViewById(R.id.product_add_image);
 	}
 
 	/*
@@ -107,59 +105,31 @@ public class LoginFragment extends Fragment implements OnClickListener {
 		}*/
 
 		if (v == btn_login) {
-			Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), spinner_category.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 			((MainActivity) getActivity()).startFragmentBill();
-//			String Url = MainApplication.UrlServer
-//					+ "users/getAuthenticate.xml";
-			String Email = edlogin_email.getText().toString();
-//			DatabaseHandler db = new DatabaseHandler(getActivity());
-			SQLContact contactdb = new SQLContact(getActivity());
+			
+			String Category = spinner_category.getSelectedItem().toString();
+			String Name = ed_product_add_name.getText().toString();
+			String Image = spinner_image.getSelectedItem().toString();
+			SQLProducts productdb = new SQLProducts(getActivity());
 	        /**
 	         * CRUD Operations
 	         * */
 	        // Inserting Contacts
 	        Log.d("Insert: ", "Inserting ..");
-	        contactdb.addContact(new Contact(Email, "9100000000"));
+	        productdb.addProduct(new Product(Category , Name , Image));
 	        
 	     // Reading all contacts
 	        Log.d("Reading: ", "Reading all contacts..");
-	        List<Contact> contacts = contactdb.getAllContacts();       
+	        List<Product> products = productdb.getAllProducts();       
 	 
-	        for (Contact cn : contacts) {
-	            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Phone: " + cn.getPhoneNumber();
-	            Toast.makeText(getActivity().getApplicationContext(), cn.getName(), Toast.LENGTH_SHORT).show();
-	                // Writing Contacts to log
-	        Log.d("Name: ", log);
+	        for (Product cn : products) {
+	            String log = "Id: "+cn.getID() +" ,Category: " + cn.getCategory() +" ,Name: " + cn.getName() + " ,Image: " + cn.getImage();
+	            // Writing Contacts to log
+	            Log.d("Name loc test : ", log);
 	        
 	        }
-	     // Creating adapter for spinner
-//			ArrayAdapter<Contact> dataAdapter = new ArrayAdapter<Contact>(getActivity(),
-//					android.R.layout.simple_spinner_item, contacts);
-//
-//			// Drop down layout style - list view with radio button
-//			dataAdapter
-//					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//			// attaching data adapter to spinner
-//			spinner.setAdapter(dataAdapter);
-//			String Pass = edlogin_pass.getText().toString();
-//			try {
-//				Pass = Utility.convertToMD5(edlogin_pass.getText().toString());
-//			} catch (NoSuchAlgorithmException e) {
-//
-//			} catch (UnsupportedEncodingException e) {
-//
-//			}
-
-			// Log.e("kiju",Utility.checkInternet(getActivity())+ "") ;
-			// if (Utility.checkInternet(getActivity()))
-			// {
-			
-			// }else {
-			// Error_dialog dialog = new Error_dialog("Error Internet",
-			// "Can not connect to internet", "");
-			// dialog.show(getActivity().getFragmentManager(), TAG);
-			// }
+	     
 
 		}
 
@@ -172,8 +142,10 @@ public class LoginFragment extends Fragment implements OnClickListener {
 		// database handler
 		
 		String[]ten={"Banh kem","Banh ngot","Khac"};
+		String[]image={"cake_01.png","cake_02.png","cake_03.png",
+				"cake_04.png","cake_05.png","cake_06.png"
+					};
 		
-
 		// Creating adapter for spinner
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
 				android.R.layout.simple_spinner_item, ten);
@@ -183,10 +155,20 @@ public class LoginFragment extends Fragment implements OnClickListener {
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		// attaching data adapter to spinner
-		spinner.setAdapter(dataAdapter);
+		spinner_category.setAdapter(dataAdapter);
+		
+		// Creating adapter for spinner
+		ArrayAdapter<String> dataAdapterImage = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+				android.R.layout.simple_spinner_item, image);
+
+		// Drop down layout style - list view with radio button
+		dataAdapterImage
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		// attaching data adapter to spinner
+		spinner_image.setAdapter(dataAdapterImage);
+	
 	}
-	
-	
 
 
 }
