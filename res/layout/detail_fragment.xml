@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/BillProductLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -12,4 +13,15 @@
         android:text="Johnathan Archer"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="30dip" />
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:cacheColorHint="#00000000"
+         >
+    </ListView>
 </LinearLayout>

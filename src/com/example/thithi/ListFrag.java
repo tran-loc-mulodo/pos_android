@@ -122,10 +122,10 @@ public class ListFrag extends Fragment implements OnClickListener {
 				
 				DetailFrag frag = (DetailFrag) getFragmentManager().findFragmentById(
 						R.id.billArea);
-				frag.setText(position+"");
-				if (frag != null && frag.isInLayout()) {
-					frag.setText("loc test nhe");
-				}
+//				frag.setText(position+"");
+//				if (frag != null && frag.isInLayout()) {
+//					frag.setText("loc test nhe");
+//				}
 			}
 		});
 	
