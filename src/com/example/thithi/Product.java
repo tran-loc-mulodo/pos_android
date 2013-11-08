@@ -6,8 +6,8 @@ public class Product {
 	//private variables
 		int _id;
 		String _category;
-		String _name;
-		String _img;
+		public String _name;
+		public String _img;
 		int _qty;
 		int _cdate;
 		int _mdate;
@@ -26,6 +26,14 @@ public class Product {
 			this._category = category;
 			this._name = name;
 			this._img = img;
+			this._qty = qty;
+		}
+		
+		// constructor
+		public Product(int id, String category , String name,  int qty){
+			this._id = id;
+			this._category = category;
+			this._name = name;
 			this._qty = qty;
 		}
 				
@@ -150,4 +158,10 @@ public class Product {
 			this._status = status;
 		}
 
+		public void setProduct(int id, String category , String name,  int qty){
+			this._id = id;
+			this._category = category;
+			this._name = name;
+			this._qty = qty;
+		}
 }

@@ -102,6 +102,34 @@ public class SQLProducts extends DatabaseHandler {
 			// return contact list
 			return productList;
 		}
+		
+		// Getting Products for bill
+		public List<Product> getProductsBill() {
+			List<Product> productList = new ArrayList<Product>();
+			// Select All Query
+			String selectQuery = "SELECT " +PRO_ID + " , " +PRO_CATEGORY + " , " + PRO_NAME + " , " + PRO_QU_TY 
+								+ " FROM " + TABLE_PRODUCTS;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Product product = new Product();
+					product.setID(Integer.parseInt(cursor.getString(0)));
+					product.setCategory(cursor.getString(1));
+					product.setName(cursor.getString(2));
+					product.setQuantity(1);
+//					product.setQuantity(Integer.parseInt(cursor.getString(4)));
+					// Adding product to list
+					productList.add(product);
+				} while (cursor.moveToNext());
+			}
+
+			// return contact list
+			return productList;
+		}
 	
 	// Updating single product
 	public int updateProduct(Product product) {

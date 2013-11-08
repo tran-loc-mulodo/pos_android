@@ -1,39 +1,34 @@
-package com.example.thithi;
+package com.example.thithi.adapter;
 
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.thithi.Product;
+import com.example.thithi.R;
 
 public class AlbumAdapter extends BaseAdapter{
-//	int[]hinh={R.drawable.cake_01,R.drawable.cake_02,R.drawable.cake_03
-//			,R.drawable.cake_04,R.drawable.cake_05,R.drawable.cake_06
-//			,R.drawable.cake_01,R.drawable.cake_02,R.drawable.cake_03
-//			,R.drawable.cake_04,R.drawable.cake_05,R.drawable.cake_06
-//		  };
-	String[]ten={"1T2","1T2","1T2","1T2","1T2","1T2",
-			"1T5","1T5","1T5","1T5","1T5","1T5"};
+
 //	private VectorPhotoOtherUser mVector;
 	private Context mContext;
 //	private ImageLoader imageLoader;
 	private ImageView mImage;
 	private TextView mNameCake;
+	int mposition;
 		
 	List<Product> mproducts ;
 	public AlbumAdapter(Context context,List<Product> products )
@@ -61,8 +56,8 @@ public class AlbumAdapter extends BaseAdapter{
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
 //		return mVector.getProperty(index);
-//		return mcontacts[position];
-		return null;
+//		return mproducts[position];
+		return mproducts.get(position);
 	}
 
 	@Override
@@ -78,6 +73,7 @@ public class AlbumAdapter extends BaseAdapter{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		final ViewHolder view;
+		
 		 LayoutInflater inflator = LayoutInflater.from(mContext);	
 			if (convertView == null) {
 				  view = new ViewHolder();		
@@ -109,11 +105,22 @@ public class AlbumAdapter extends BaseAdapter{
 				// load image
 			        try {
 			            // get input stream
+			        	mposition = position;
+//			        	Toast.makeText(mContext, mposition+"", Toast.LENGTH_SHORT).show();
 			            InputStream ims = mContext.getAssets().open(mproducts.get(position)._img);
 			            // load image as Drawable
 			            Drawable d = Drawable.createFromStream(ims, null);
 			            // set image to ImageView
 			            view.imgChoice.setImageDrawable(d);
+			            /*view.imgChoice.setOnClickListener(new OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+//								Log.d("values array list", mproducts.get(mposition)._name+"");
+								
+							}
+						});*/
 			        }
 			        catch(IOException ex) {
 			            Log.d("load image", "loi nhe");
@@ -123,6 +130,14 @@ public class AlbumAdapter extends BaseAdapter{
 				   
 				  view.txtNameofCake = (TextView) convertView.findViewById(R.id.kindofcake);
 				  view.txtNameofCake.setText(mproducts.get(position)._name);
+				  /*view.txtNameofCake.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						
+					}
+				});*/
 				  convertView.setTag(view);
 			} else {
 				  view = (ViewHolder)convertView.getTag();

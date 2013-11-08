@@ -1,5 +1,11 @@
 package com.example.thithi;
 
+import java.util.List;
+
+import com.example.thithi.adapter.DetailAdapter;
+import com.example.thithi.fragment.DetailFrag;
+import com.example.thithi.fragment.ListFrag;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -16,6 +22,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	private DetailFrag detailFragment;
 	private CreateProductFrag createProductFragment;
 	private LoginFragment loginFragment;
+	public List<Product> productsBill;
+	DetailAdapter adapterBill;
     
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +31,10 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.main);
         startFragmentProduct();
         startFragmentBill();
+        
+        
+        
+        
     }
 	
 	public void startFragmentProduct() {
@@ -36,6 +48,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void startFragmentBill() {
 
 		detailFragment = new DetailFrag();
+		adapterBill = new DetailAdapter(this , productsBill);
+		detailFragment.lv.setAdapter(adapterBill);
 		getFragmentManager().beginTransaction()
 				.replace(R.id.billArea, detailFragment)
 				.addToBackStack("Bill").commit();

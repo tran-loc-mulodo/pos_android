@@ -1,7 +1,13 @@
-package com.example.thithi;
+package com.example.thithi.adapter;
 
 
 import java.util.List;
+
+import com.example.thithi.Contact;
+import com.example.thithi.Product;
+import com.example.thithi.R;
+import com.example.thithi.R.id;
+import com.example.thithi.R.layout;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +19,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AlbumAdapter_bk extends BaseAdapter{
+public class DetailAdapter extends BaseAdapter{
 //	int[]hinh={R.drawable.cake_01,R.drawable.cake_02,R.drawable.cake_03
 //			,R.drawable.cake_04,R.drawable.cake_05,R.drawable.cake_06
 //			,R.drawable.cake_01,R.drawable.cake_02,R.drawable.cake_03
@@ -27,13 +33,13 @@ public class AlbumAdapter_bk extends BaseAdapter{
 	private ImageView mImage;
 	private TextView mNameCake;
 		
-	List<Contact> mcontacts ;
-	public AlbumAdapter_bk(Context context,List<Contact> contacts )
+	List<Product> nproducts ;
+	public DetailAdapter(Context context,List<Product> products )
 	{
 //		mVector = vectorPhotoOtherUser;
 		mContext = context;
 //		mImage=new ImageLoader(mContext);
-		mcontacts = contacts;
+		nproducts = products;
 	}
 	
 	/*
@@ -43,7 +49,7 @@ public class AlbumAdapter_bk extends BaseAdapter{
 	public int getCount() {
 		// TODO Auto-generated method stub
 //		return mVector.getPropertyCount();
-		return mcontacts.size();
+		return nproducts.size();
 	}
 
 	/*
@@ -74,14 +80,13 @@ public class AlbumAdapter_bk extends BaseAdapter{
 			if (convertView == null) {
 				  view = new ViewHolder();		
 	
-				 convertView = inflator.inflate(R.layout.gridview_product , null);
-				 view.imgChoice = (ImageView) convertView
-						.findViewById(R.id.imgGridview);
+				 convertView = inflator.inflate(R.layout.listview_item , null);
+//				 view.imgChoice = (ImageView) convertView.findViewById(R.id.imgGridview);
 //				 view.imgChoice.setImageResource(hinh[position]);
 				 
 				// Set name for image
-				  view.txtNameofCake = (TextView) convertView.findViewById(R.id.kindofcake);
-				  view.txtNameofCake.setText(mcontacts.get(position)._name);
+				 view.txtNameofCakeBill = (TextView) convertView.findViewById(R.id.nameofproductBill);
+				  view.txtNameofCakeBill.setText(nproducts.get(position)._name);
 				  convertView.setTag(view);
 			} else {
 				  view = (ViewHolder)convertView.getTag();
@@ -95,8 +100,7 @@ public class AlbumAdapter_bk extends BaseAdapter{
 	 * Class view holder
 	 */
 	 public static class ViewHolder {
-		 public ImageView imgChoice;
-		 public TextView txtNameofCake;
+		 public TextView txtNameofCakeBill;
 	}
 
 }

@@ -1,6 +1,14 @@
-package com.example.thithi;
+package com.example.thithi.fragment;
 
 import java.util.List;
+
+import com.example.thithi.Product;
+import com.example.thithi.R;
+import com.example.thithi.SQLProducts;
+import com.example.thithi.R.id;
+import com.example.thithi.R.layout;
+import com.example.thithi.adapter.AlbumAdapter;
+import com.example.thithi.adapter.DetailAdapter;
 
 
 import android.app.Activity;
@@ -36,6 +44,7 @@ public class ListFrag extends Fragment implements OnClickListener {
 	private RelativeLayout ListProductLayout;
 	private GridView gv;
 	private TextView tv_banhkem , tv_banhngot , tv_khac;
+	private List<Product> products;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -104,7 +113,7 @@ public class ListFrag extends Fragment implements OnClickListener {
 		
 		SQLProducts productdb = new SQLProducts(getActivity());
 		
-		List<Product> products = productdb.getAllProducts(param); 
+		products = productdb.getAllProducts(param); 
 		 
 		for (Product cn : products) {
             String log = "Id: "+cn.getID() +" ,Category: " + cn.getCategory() +" ,Name: " + cn.getName() + " ,Image: " + cn.getImage();
@@ -122,6 +131,13 @@ public class ListFrag extends Fragment implements OnClickListener {
 				
 				DetailFrag frag = (DetailFrag) getFragmentManager().findFragmentById(
 						R.id.billArea);
+				Toast.makeText(getActivity().getApplicationContext(), products.get(position).getID()+products.get(position)._name, Toast.LENGTH_SHORT).show();
+//				frag.products.
+				Product a = new Product();
+				a.setProduct(99, "CAKTGORY", "TEST PRODUCT", 1);
+				frag.products.add(a);
+				DetailAdapter locAc = new DetailAdapter(getActivity() , products);
+				frag.lv.setAdapter(locAc);
 //				frag.setText(position+"");
 //				if (frag != null && frag.isInLayout()) {
 //					frag.setText("loc test nhe");
