@@ -4,11 +4,13 @@ package com.example.thithi.adapter;
 import java.util.List;
 
 import com.example.thithi.Contact;
+import com.example.thithi.OrderDetailNemo;
 import com.example.thithi.Product;
 import com.example.thithi.R;
 import com.example.thithi.R.id;
 import com.example.thithi.R.layout;
 
+import android.R.integer;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -16,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,9 +33,7 @@ public class DetailAdapter extends BaseAdapter{
 //	private VectorPhotoOtherUser mVector;
 	private Context mContext;
 //	private ImageLoader imageLoader;
-	private ImageView mImage;
-	private TextView mNameCake;
-		
+	private TextView mNameCake , mQtyCake;	
 	List<Product> nproducts ;
 	public DetailAdapter(Context context,List<Product> products )
 	{
@@ -56,11 +57,11 @@ public class DetailAdapter extends BaseAdapter{
 	 * get item in adapter
 	 */
 	@Override
-	public Object getItem(int position) {
+	public Product getItem(int position) {
 		// TODO Auto-generated method stub
 //		return mVector.getProperty(index);
 //		return mcontacts[position];
-		return null;
+		return nproducts.get(position);
 	}
 
 	@Override
@@ -84,9 +85,18 @@ public class DetailAdapter extends BaseAdapter{
 //				 view.imgChoice = (ImageView) convertView.findViewById(R.id.imgGridview);
 //				 view.imgChoice.setImageResource(hinh[position]);
 				 
-				// Set name for image
+				// Set name for product
 				 view.txtNameofCakeBill = (TextView) convertView.findViewById(R.id.nameofproductBill);
 				  view.txtNameofCakeBill.setText(nproducts.get(position)._name);
+				  
+				  // Set qty for product
+				  view.edQtyofCakeBill = (TextView) convertView.findViewById(R.id.qtyproductBill);
+				  view.edQtyofCakeBill.setText( String.valueOf( nproducts.get(position).getQuantity()) );
+				  
+				  // Set price for product
+				  view.tvPrice = (TextView) convertView.findViewById(R.id.priceproductBill);
+				  view.tvPrice.setText( String.valueOf( nproducts.get(position).getRetailPrice()) );
+				  
 				  convertView.setTag(view);
 			} else {
 				  view = (ViewHolder)convertView.getTag();
@@ -100,7 +110,7 @@ public class DetailAdapter extends BaseAdapter{
 	 * Class view holder
 	 */
 	 public static class ViewHolder {
-		 public TextView txtNameofCakeBill;
+		 public TextView txtNameofCakeBill , edQtyofCakeBill , tvPrice;
 	}
 
 }

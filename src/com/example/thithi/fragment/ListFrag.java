@@ -2,6 +2,8 @@ package com.example.thithi.fragment;
 
 import java.util.List;
 
+import com.example.thithi.MainActivity;
+import com.example.thithi.OrderDetailNemo;
 import com.example.thithi.Product;
 import com.example.thithi.R;
 import com.example.thithi.SQLProducts;
@@ -11,6 +13,7 @@ import com.example.thithi.adapter.AlbumAdapter;
 import com.example.thithi.adapter.DetailAdapter;
 
 
+import android.R.bool;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ListFragment;
@@ -44,7 +47,9 @@ public class ListFrag extends Fragment implements OnClickListener {
 	private RelativeLayout ListProductLayout;
 	private GridView gv;
 	private TextView tv_banhkem , tv_banhngot , tv_khac;
-	private List<Product> products;
+	private List<Product> products , productNemo;
+	private SQLProducts productdb;
+	private int productID;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -111,37 +116,48 @@ public class ListFrag extends Fragment implements OnClickListener {
 	private void loadGridviewData(String param) {
 		// database handler
 		
-		SQLProducts productdb = new SQLProducts(getActivity());
+		productdb = new SQLProducts(getActivity());
 		
 		products = productdb.getAllProducts(param); 
 		 
-		for (Product cn : products) {
-            String log = "Id: "+cn.getID() +" ,Category: " + cn.getCategory() +" ,Name: " + cn.getName() + " ,Image: " + cn.getImage();
-            // Writing Contacts to log
-            Log.d("Name loc test : ", log);
-        
-        }
+		
 		
 		gv.setAdapter(new AlbumAdapter(getActivity() , products));
-		Log.d("log product", products.size()+"");
+//		Log.d("log product", products.size()+"");
 		gv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
 				int position, long id) {
-				Log.e("AAA","AAAA");
 				
-				DetailFrag frag = (DetailFrag) getFragmentManager().findFragmentById(
-						R.id.billArea);
-				Toast.makeText(getActivity().getApplicationContext(), products.get(position).getID()+products.get(position)._name, Toast.LENGTH_SHORT).show();
-//				frag.products.
-				Product a = new Product();
-				a.setProduct(99, "CAKTGORY", "TEST PRODUCT", 1);
-				frag.products.add(a);
-				DetailAdapter locAc = new DetailAdapter(getActivity() , products);
-				frag.lv.setAdapter(locAc);
-//				frag.setText(position+"");
-//				if (frag != null && frag.isInLayout()) {
-//					frag.setText("loc test nhe");
-//				}
+				productID = products.get(position).getID();
+				String Category = products.get(position).getCategory();
+				String Name = products.get(position).getName();
+				Float who_price = products.get(position).getWhosallePrice();
+				Float retail_price = products.get(position).getRetailPrice();
+				
+				Boolean flag = false;
+				Toast.makeText(getActivity(), "ID:"+ productID +" Caterogy: "+ Category + " name: " + Name + " gia:" + retail_price, Toast.LENGTH_SHORT).show();
+				/**
+		         * CRUD Operations
+		         * */
+				productNemo = productdb.getProductsNemoBill();
+				for(int i=0;i<productNemo.size();i++){
+				    if(productNemo.get(i).getID() == productID ){
+				    	//Update product in database
+				    	int Qty = productNemo.get(position).getQuantity() + 1;
+				    	
+				    	Float price = retail_price * Qty;
+				    	productdb.updateQtyProductNemo(new Product(productID ,Category , Name , Qty , who_price , price));
+				    	flag = true;
+				    }   
+				}
+				if(!flag){
+					// Inserting Contacts
+					productdb.addProductNemo(new Product(productID ,Category , Name , 1 , who_price , retail_price));
+				}
+				flag = false;
+//				productdb.addProductNemo(new Product(productID ,Category , Name , 1));
+				((MainActivity) getActivity()).startFragmentBill();
+				
 			}
 		});
 	

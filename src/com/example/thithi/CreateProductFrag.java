@@ -78,10 +78,7 @@ public class CreateProductFrag extends Fragment implements OnClickListener{
 //		edlogin_pass.setText("123456");
 	}
 	
-	public void setText(String item) {
-		TextView view = (TextView) getView().findViewById(R.id.captain);
-		view.setText(item);
-	}
+	
 
 	@Override
 	public void onClick(View v) {

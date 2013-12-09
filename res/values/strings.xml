@@ -31,4 +31,6 @@
 	<string name="Category">Loai Banh</string>
 	<string name="ProductName">Ten Banh</string>
 	<string name="Image">Hinh</string>
+	<string name="RetailPrice">Giá bán lẻ</string>
+	<string name="WholePrice">Giá bán sỷ</string>
 </resources>

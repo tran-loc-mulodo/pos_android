@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LoginPageLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/back_ground" >
+    android:layout_height="match_parent" >
 
 <!-- Spinner Dropdown Category -->
 	<TextView
@@ -11,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:text="@string/Category"
         android:textSize="15sp" />
     <Spinner
@@ -20,7 +19,7 @@
         android:layout_height="wrap_content"
         android:prompt="@string/spinner_title"
         android:layout_toRightOf="@+id/tv_category"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="8dip"
         android:layout_marginRight="8dip"
         android:textColor="#000000"
@@ -85,18 +84,17 @@
         android:layout_below="@+id/tv_product_add_image"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="30dp"
-        android:text="@string/Password"
+        android:text="@string/RetailPrice"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/edlogin_pass"
+        android:id="@+id/ed_product_add_retail_price"
         android:layout_width="200dp"
         android:layout_height="30dp"
         android:layout_below="@+id/product_add_image"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="25dp"
-        android:layout_toRightOf="@+id/tv_pass"
         android:background="@drawable/bg_search"
         android:drawablePadding="4dip"
         android:drawableRight="@drawable/ic_close"
@@ -104,17 +102,42 @@
         android:paddingRight="5dip"
         android:singleLine="true"
         android:textColor="#666666"
-        android:inputType="textPassword" 
+        android:inputType="text|textPhonetic" 
         android:textSize="14sp" />
     
-    
+    <TextView
+        android:id="@+id/tv_who_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_pass"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/WholePrice"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/ed_product_add_who_price"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ed_product_add_retail_price"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/bg_search"
+        android:drawablePadding="4dip"
+        android:drawableRight="@drawable/ic_close"
+        android:paddingLeft="10dip"
+        android:paddingRight="5dip"
+        android:singleLine="true"
+        android:textColor="#666666"
+        android:inputType="text|textPhonetic" 
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_alignRight="@+id/edlogin_email"
-        android:layout_below="@+id/edlogin_pass"
+        android:layout_below="@+id/ed_product_add_who_price"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/custom_btn_sandrift"
@@ -126,33 +149,14 @@
         android:id="@+id/btn_register"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_alignRight="@+id/edlogin_email"
-        android:layout_below="@+id/btn_login"
+        android:layout_alignRight="@+id/btn_login"
+        android:layout_below="@+id/ed_product_add_who_price"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_btn_sandrift"
         android:text="@string/Register"
         android:textSize="15sp" />
 
-    <LinearLayout
-        android:id="@+id/linear_login_eraser_email"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-       
-        android:layout_alignRight="@+id/edlogin_email"
-        android:layout_alignTop="@+id/edlogin_email"
-  
-        android:orientation="vertical" >
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linear_login_eraser_password"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-       
-        android:layout_alignRight="@+id/edlogin_pass"
-        android:layout_alignTop="@+id/edlogin_pass"
-  
-        android:orientation="vertical" >
-    </LinearLayout>
+    
 
 </RelativeLayout>

@@ -1,6 +1,9 @@
 package com.example.thithi;
 
+import java.util.List;
+
 import android.R.bool;
+import android.widget.Toast;
 
 public class Product {
 	//private variables
@@ -36,6 +39,17 @@ public class Product {
 			this._name = name;
 			this._qty = qty;
 		}
+		
+		// constructor
+		public Product(int id, String category , String name,  int qty , Float who_price , Float retail_price){
+			this._id = id;
+			this._category = category;
+			this._name = name;
+			this._qty = qty;
+			this._whosale_price = who_price;
+			this._retail_price = retail_price;
+		}
+		
 				
 		// constructor
 		public Product(int id, String category , String name, String img){
@@ -51,6 +65,23 @@ public class Product {
 			this._name = name;
 			this._img = img;
 		}
+		
+		// constructor
+				public Product(String category , String name, String img , Float who_price ,Float re_price ){
+					this._category = category;
+					this._name = name;
+					this._img = img;
+					this._retail_price = re_price;
+					this._whosale_price = who_price;
+				}	
+		
+		// constructor
+		public Product(String category , String name, String img , Float re_price){
+			this._category = category;
+			this._name = name;
+			this._img = img;
+			this._retail_price = re_price;
+		}							
 				
 		// constructor
 		public Product(String name, String img){
@@ -140,12 +171,12 @@ public class Product {
 		
 		// getting retail price
 		public Float getRetailPrice(){
-			return this._whosale_price;
+			return this._retail_price;
 		}
 		
 		// setting retail price
-		public void setRetailPrice(Float Wholesale_price){
-			this._whosale_price = Wholesale_price;
+		public void setRetailPrice(Float retail_price){
+			this._retail_price = retail_price;
 		}
 		
 		// getting status
@@ -163,5 +194,14 @@ public class Product {
 			this._category = category;
 			this._name = name;
 			this._qty = qty;
+		}
+		
+		public void setProduct(Product aproducts){
+			
+			this._id = aproducts._id;
+			this._category = aproducts._category;
+			this._name = aproducts._name;
+			this._qty = 1;
+			
 		}
 }

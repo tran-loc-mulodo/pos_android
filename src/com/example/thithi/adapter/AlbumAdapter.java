@@ -112,15 +112,7 @@ public class AlbumAdapter extends BaseAdapter{
 			            Drawable d = Drawable.createFromStream(ims, null);
 			            // set image to ImageView
 			            view.imgChoice.setImageDrawable(d);
-			            /*view.imgChoice.setOnClickListener(new OnClickListener() {
-							
-							@Override
-							public void onClick(View v) {
-								// TODO Auto-generated method stub
-//								Log.d("values array list", mproducts.get(mposition)._name+"");
-								
-							}
-						});*/
+			            
 			        }
 			        catch(IOException ex) {
 			            Log.d("load image", "loi nhe");
@@ -130,14 +122,7 @@ public class AlbumAdapter extends BaseAdapter{
 				   
 				  view.txtNameofCake = (TextView) convertView.findViewById(R.id.kindofcake);
 				  view.txtNameofCake.setText(mproducts.get(position)._name);
-				  /*view.txtNameofCake.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						
-					}
-				});*/
+				  
 				  convertView.setTag(view);
 			} else {
 				  view = (ViewHolder)convertView.getTag();
