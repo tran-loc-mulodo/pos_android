@@ -135,7 +135,6 @@ public class ListFrag extends Fragment implements OnClickListener {
 				Float retail_price = products.get(position).getRetailPrice();
 				
 				Boolean flag = false;
-				Toast.makeText(getActivity(), "ID:"+ productID +" Caterogy: "+ Category + " name: " + Name + " gia:" + retail_price, Toast.LENGTH_SHORT).show();
 				/**
 		         * CRUD Operations
 		         * */
@@ -145,7 +144,7 @@ public class ListFrag extends Fragment implements OnClickListener {
 				    	//Update product in database
 				    	int Qty = productNemo.get(position).getQuantity() + 1;
 				    	
-				    	Float price = retail_price * Qty;
+				    	Float price = retail_price;
 				    	productdb.updateQtyProductNemo(new Product(productID ,Category , Name , Qty , who_price , price));
 				    	flag = true;
 				    }   

@@ -6,6 +6,7 @@ import com.example.thithi.adapter.DetailAdapter;
 import com.example.thithi.fragment.DetailFrag;
 import com.example.thithi.fragment.ListFrag;
 import com.example.thithi.fragment.LoginFragment;
+import com.example.thithi.fragment.ReportFragment;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -23,7 +24,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private DetailFrag detailFragment;
 	private CreateProductFrag createProductFragment;
 	private LoginFragment loginFragment;
-	
+	private ReportFragment reportFragment;
     
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,10 +32,7 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.main);
         startFragmentProduct();
         startFragmentBill();
-        
-        
-        
-        
+        startFragmentReport();
     }
 	
 	public void startFragmentProduct() {
@@ -70,6 +68,14 @@ public class MainActivity extends Activity implements OnClickListener {
 				.addToBackStack("Import product").commit();
 	}
 	
+	public void startFragmentReport() {
+
+		reportFragment = new ReportFragment();
+		getFragmentManager().beginTransaction()
+				.replace(R.id.contentArea, reportFragment)
+				.addToBackStack("Report").commit();
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -90,6 +96,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	        case R.id.action_create:
 	        	startFragmentCreateProduct();
 	            return true;
+	        case R.id.action_report:
+	        	startFragmentReport();
+	            return true;    
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }

@@ -5,6 +5,7 @@
     <string name="action_home">Home</string>
     <string name="action_settings">Settings</string>
     <string name="action_create">Create</string>
+    <string name="action_report">Thống kê</string>
     <string name="hello_world">Hello world!</string>
     <string name="Username">User Name</string>
     <string name="Email">Email</string>
@@ -33,4 +34,6 @@
 	<string name="Image">Hinh</string>
 	<string name="RetailPrice">Giá bán lẻ</string>
 	<string name="WholePrice">Giá bán sỷ</string>
+	<string name="Report">Thống kê</string>
+	<string name="CurrentDate">Hôm nay</string>
 </resources>

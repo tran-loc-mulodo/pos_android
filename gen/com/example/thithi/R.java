@@ -207,21 +207,27 @@ containing a value of this type.
         public static final int BillProductLayout_btn_bill_save=0x7f0a0005;
         public static final int ListProductLayout=0x7f0a0008;
         public static final int LoginPageLayout=0x7f0a0010;
-        public static final int action_create=0x7f0a0021;
-        public static final int action_home=0x7f0a0020;
-        public static final int action_settings=0x7f0a001f;
+        public static final int ReportPageLayout=0x7f0a001f;
+        public static final int action_create=0x7f0a0027;
+        public static final int action_home=0x7f0a0026;
+        public static final int action_report=0x7f0a0028;
+        public static final int action_settings=0x7f0a0025;
         public static final int billArea=0x7f0a001e;
         public static final int btn_add=0x7f0a0001;
+        public static final int btn_current_date=0x7f0a0023;
         public static final int btn_login=0x7f0a001b;
         public static final int btn_register=0x7f0a001c;
+        public static final int btn_report=0x7f0a0024;
         public static final int contentArea=0x7f0a001d;
         public static final int ed_product_add_name=0x7f0a0014;
         public static final int ed_product_add_retail_price=0x7f0a0018;
         public static final int ed_product_add_who_price=0x7f0a001a;
+        public static final int ed_report_date=0x7f0a0021;
         public static final int gridView1=0x7f0a000c;
         public static final int imgGridview=0x7f0a0006;
         public static final int input_label=0x7f0a0000;
         public static final int kindofcake=0x7f0a0007;
+        public static final int linear_report_date=0x7f0a0022;
         public static final int listView1=0x7f0a0004;
         public static final int nameofproductBill=0x7f0a000d;
         public static final int priceproductBill=0x7f0a000f;
@@ -236,6 +242,7 @@ containing a value of this type.
         public static final int tv_pass=0x7f0a0015;
         public static final int tv_product_add_image=0x7f0a0016;
         public static final int tv_product_add_name=0x7f0a0013;
+        public static final int tv_report=0x7f0a0020;
         public static final int tv_who_price=0x7f0a0019;
     }
     public static final class layout {
@@ -247,42 +254,46 @@ containing a value of this type.
         public static final int listview_item=0x7f030005;
         public static final int login=0x7f030006;
         public static final int main=0x7f030007;
+        public static final int report=0x7f030008;
     }
     public static final class menu {
         public static final int main=0x7f090000;
     }
     public static final class string {
-        public static final int BanhKem=0x7f070017;
-        public static final int BanhNgot=0x7f070018;
-        public static final int Birthday=0x7f07000a;
-        public static final int Cancel=0x7f07000c;
-        public static final int Category=0x7f07001a;
-        public static final int Comment=0x7f070010;
-        public static final int Confirmpasswrod=0x7f070008;
-        public static final int Delete=0x7f070015;
-        public static final int DetailPhoto=0x7f07000f;
-        public static final int Email=0x7f070006;
-        public static final int Image=0x7f07001c;
-        public static final int Khac=0x7f070019;
-        public static final int Login=0x7f07000d;
-        public static final int Password=0x7f070007;
-        public static final int Phone=0x7f070009;
-        public static final int Photolike=0x7f070014;
-        public static final int ProductName=0x7f07001b;
-        public static final int Register=0x7f07000b;
-        public static final int RetailPrice=0x7f07001d;
-        public static final int Submit=0x7f07000e;
-        public static final int TextLike=0x7f070011;
-        public static final int TextUpload=0x7f070012;
-        public static final int Upload=0x7f070013;
-        public static final int Username=0x7f070005;
-        public static final int WholePrice=0x7f07001e;
+        public static final int BanhKem=0x7f070018;
+        public static final int BanhNgot=0x7f070019;
+        public static final int Birthday=0x7f07000b;
+        public static final int Cancel=0x7f07000d;
+        public static final int Category=0x7f07001b;
+        public static final int Comment=0x7f070011;
+        public static final int Confirmpasswrod=0x7f070009;
+        public static final int CurrentDate=0x7f070021;
+        public static final int Delete=0x7f070016;
+        public static final int DetailPhoto=0x7f070010;
+        public static final int Email=0x7f070007;
+        public static final int Image=0x7f07001d;
+        public static final int Khac=0x7f07001a;
+        public static final int Login=0x7f07000e;
+        public static final int Password=0x7f070008;
+        public static final int Phone=0x7f07000a;
+        public static final int Photolike=0x7f070015;
+        public static final int ProductName=0x7f07001c;
+        public static final int Register=0x7f07000c;
+        public static final int Report=0x7f070020;
+        public static final int RetailPrice=0x7f07001e;
+        public static final int Submit=0x7f07000f;
+        public static final int TextLike=0x7f070012;
+        public static final int TextUpload=0x7f070013;
+        public static final int Upload=0x7f070014;
+        public static final int Username=0x7f070006;
+        public static final int WholePrice=0x7f07001f;
         public static final int action_create=0x7f070003;
         public static final int action_home=0x7f070001;
+        public static final int action_report=0x7f070004;
         public static final int action_settings=0x7f070002;
         public static final int app_name=0x7f070000;
-        public static final int hello_world=0x7f070004;
-        public static final int spinner_title=0x7f070016;
+        public static final int hello_world=0x7f070005;
+        public static final int spinner_title=0x7f070017;
     }
     public static final class style {
         /** 
